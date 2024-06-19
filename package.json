@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "docx2pdf-converter": "^1.1.0",
     "docxtemplater": "^3.47.4",
     "pizzip": "^3.1.7"
   }

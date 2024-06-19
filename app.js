@@ -1,10 +1,11 @@
 // PizZip is required because docx/pptx/xlsx files are all zipped files, and
 // the PizZip library allows us to load the file in memory
+var d=Date.now();
 const PizZip = require("pizzip");
 const Docxtemplater = require("docxtemplater");
-
 const fs = require("fs");
 const path = require("path");
+const topdf = require('docx2pdf-converter')
 
 // Load the docx file as binary content
 const content = fs.readFileSync(
@@ -40,4 +41,9 @@ const buf = doc.getZip().generate({
 
 // buf is a nodejs Buffer, you can either write it to a
 // file or res.send it with express for example.
-fs.writeFileSync(path.resolve(__dirname, "output.docx"), buf);
+var outputFilePath = path.resolve(__dirname, "output.docx");
+fs.writeFileSync(outputFilePath, buf);
+
+topdf.convert(outputFilePath,path.resolve(__dirname,'output.pdf'))
+
+console.log("duracion de ejecucion: ",Date.now()-d)
