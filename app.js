@@ -7,6 +7,9 @@ const fs = require("fs");
 const path = require("path");
 const topdf = require('docx2pdf-converter')
 
+
+
+
 // Load the docx file as binary content
 const content = fs.readFileSync(
     path.resolve(__dirname, "templates\\Carta ejemplo.docx"),
@@ -46,4 +49,6 @@ fs.writeFileSync(outputFilePath, buf);
 
 topdf.convert(outputFilePath,path.resolve(__dirname,'output.pdf'))
 
-console.log("duracion de ejecucion: ",Date.now()-d)
+console.log("duracion ejecucion: "+(Date.now()-d))
+
+
